@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package subscription;
+
+option go_package = "proto/subscription;subscription";
+
+import "google/protobuf/empty.proto";
+
+// Define the SubscriptionService
+service SubscriptionService {
+  rpc CreateSubscriptionPlan(CreateSubscriptionPlanRequest) returns (CreateSubscriptionPlanResponse);
+  rpc GetSubscriptionPlan(GetSubscriptionPlanRequest) returns (SubscriptionPlan);
+  rpc ListSubscriptionPlans(ListSubscriptionPlansRequest) returns (ListSubscriptionPlansResponse);
+  rpc UpdateSubscriptionPlan(UpdateSubscriptionPlanRequest) returns (SubscriptionPlan);
+  rpc DeleteSubscriptionPlan(DeleteSubscriptionPlanRequest) returns (google.protobuf.Empty);
+}
+
+// Define the SubscriptionPlan message
+message SubscriptionPlan {
+  string id = 1;
+  string productId = 2;
+  string planName = 3;
+  float price = 4;
+  int32 durationDays = 5;
+  string createdAt = 6;
+  string updatedAt = 7;
+}
+
+// Define request and response for creating a subscription plan
+message CreateSubscriptionPlanRequest {
+  string productId = 1;
+  string planName = 2;
+  float price = 3;
+  int32 durationDays = 4;
+}
+
+message CreateSubscriptionPlanResponse {
+  SubscriptionPlan subscriptionPlan = 1;
+}
+
+// Define request and response for fetching a single subscription plan
+message GetSubscriptionPlanRequest {
+  string id = 1;
+}
+
+// Define request and response for listing subscription plans
+message ListSubscriptionPlansRequest {
+  string productId = 1;
+}
+
+message ListSubscriptionPlansResponse {
+  repeated SubscriptionPlan subscriptionPlans = 1;
+}
+
+// Define request and response for updating a subscription plan
+message UpdateSubscriptionPlanRequest {
+  string id = 1;
+  string planName = 2;
+  float price = 3;
+  int32 durationDays = 4;
+}
+
+message DeleteSubscriptionPlanRequest {
+  string id = 1;
+}

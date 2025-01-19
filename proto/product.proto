@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "proto/product;product";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// Main Product Message
+message Product {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+    
+    oneof product_type {
+        DigitalProduct digital_product = 7;
+        PhysicalProduct physical_product = 8;
+        SubscriptionProduct subscription_product = 9;
+    }
+}
+
+// Product Response Message for returning product data in gRPC responses
+message ProductResponse {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float price = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+}
+
+// Digital Product Details
+message DigitalProduct {
+    int32 file_size = 1;
+    string download_link = 2;
+}
+
+// Physical Product Details
+message PhysicalProduct {
+    float weight = 1;
+    string dimensions = 2;
+}
+
+// Subscription Product Details
+message SubscriptionProduct {
+    string subscription_period = 1;
+    float renewal_price = 2;
+}
+
+// Subscription Plan Details
+message SubscriptionPlan {
+    string id = 1;
+    string product_id = 2;
+    string plan_name = 3;
+    int32 duration = 4;
+    float price = 5;
+}
+
+
+// gRPC Service Definitions
+
+service ProductService {
+    // Create a new product
+    rpc CreateProduct (Product) returns (Product);
+    
+    // Fetch a product by ID
+    rpc GetProduct (GetProductRequest) returns (ProductResponse);
+    
+    // Update an existing product
+    rpc UpdateProduct (Product) returns (Product);
+    
+    // Delete a product by ID
+    rpc DeleteProduct (DeleteProductRequest) returns (google.protobuf.Empty);
+    
+    // List products based on type (e.g., digital, physical, subscription)
+    rpc ListProducts (ListProductsRequest) returns (ListProductsResponse);
+}
+
+service SubscriptionService {
+    // Create a new subscription plan
+    rpc CreateSubscriptionPlan (SubscriptionPlan) returns (SubscriptionPlan);
+    
+    // Fetch a subscription plan by ID
+    rpc GetSubscriptionPlan (GetSubscriptionPlanRequest) returns (SubscriptionPlan);
+    
+    // Update an existing subscription plan
+    rpc UpdateSubscriptionPlan (SubscriptionPlan) returns (SubscriptionPlan);
+    
+    // Delete a subscription plan by ID
+    rpc DeleteSubscriptionPlan (DeleteSubscriptionPlanRequest) returns (google.protobuf.Empty);
+    
+    // List subscription plans for a specific product
+    rpc ListSubscriptionPlans (ListSubscriptionPlansRequest) returns (ListSubscriptionPlansResponse);
+}
+
+// Request and Response Messages
+
+message GetProductRequest {
+    string id = 1;
+}
+
+message DeleteProductRequest {
+    string id = 1;
+}
+
+// Response after deleting a product
+message DeleteProductResponse {
+    string message = 1;
+}
+
+message ListProductsRequest {
+    string type = 1;
+}
+
+message ListProductsResponse {
+    repeated Product products = 1;
+}
+
+message GetSubscriptionPlanRequest {
+    string id = 1;
+}
+
+message DeleteSubscriptionPlanRequest {
+    string id = 1;
+}
+
+message ListSubscriptionPlansRequest {
+    string product_id = 1;
+}
+
+message ListSubscriptionPlansResponse {
+    repeated SubscriptionPlan subscription_plans = 1;
+}
