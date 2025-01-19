@@ -79,7 +79,7 @@ go get -u gorm.io/driver/postgres
     - To install the Protocol Buffers compiler (protoc) on Windows, follow these steps:
     - Step 1: Download Protocol Buffers
     - Visit the official Protocol Buffers GitHub releases page:
-        - Click [Download Docker Desktop (macOS/Windows)]([https://www.uniben.edu/](https://github.com/protocolbuffers/protobuf/releases))
+        - [Download Docker Desktop (macOS/Windows)](https://github.com/protocolbuffers/protobuf/releases)
     - Download the latest version of the precompiled binaries for Windows:
         - Look for a file named something like
     - Step 2: Extract the ZIP File
