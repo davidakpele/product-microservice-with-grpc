@@ -81,7 +81,7 @@ go get -u gorm.io/driver/postgres
     - Visit the official Protocol Buffers GitHub releases page:
         - [Download Docker Desktop (macOS/Windows)](https://github.com/protocolbuffers/protobuf/releases)
     - Download the latest version of the precompiled binaries for Windows:
-        - Look for a file named something like
+        - Look for a file named something like protobuf-29.3.zip
     - Step 2: Extract the ZIP File
       - Extract the contents of the downloaded ZIP file to a folder on your system, such as:
 ```
