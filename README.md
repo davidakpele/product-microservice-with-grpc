@@ -77,18 +77,18 @@ go get -u gorm.io/driver/postgres
 
 - Install the necessary packages for gRPC support:
     - To install the Protocol Buffers compiler (protoc) on Windows, follow these steps:
-    - ** Step 1: Download Protocol Buffers **
+    - Step 1: Download Protocol Buffers
     - Visit the official Protocol Buffers GitHub releases page:
-        - https://github.com/protocolbuffers/protobuf/releases
+        - Click [Download Docker Desktop (macOS/Windows)]([https://www.uniben.edu/](https://github.com/protocolbuffers/protobuf/releases))
     - Download the latest version of the precompiled binaries for Windows:
         - Look for a file named something like
-    - ** Step 2: Extract the ZIP File **
+    - Step 2: Extract the ZIP File
       - Extract the contents of the downloaded ZIP file to a folder on your system, such as:
 ```
 C:\protobuf
 ```
 - The folder should contain:
-- ** Step 3: Add to System PATH **
+- Step 3: Add to System PATH 
     - Add the bin directory of the extracted folder to your system's PATH environment variable:
         - Open the Start Menu and search for Environment Variables.
         - Click Edit the system environment variables.
@@ -96,7 +96,7 @@ C:\protobuf
         - Under System Variables, locate the Path variable, select it, and click Edit.
         - Click New and add the path to the bin directory (e.g., C:\protobuf\bin).
         - Click OK to save and close all windows.
-- ** Step 4: Verify Installation **
+- Step 4: Verify Installation 
     - Open a new Command Prompt (cmd) or PowerShell window.
     - Run the following command to check if protoc is installed:
 ```
