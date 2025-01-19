@@ -191,7 +191,7 @@ message GetSubscriptionPlanResponse {
 > The Default Golang version installed was go 1.23.1 in go.mod file rename to 1.23 or Just make sure the golang version inside go.mod matches with the Dockerfile FROM golang:1.23-alpine vision.
 
 - Created Dockerfile to containerize our application to make it easier to deploy and manage.
-    - Also added ENV instructions for each environment variable that your application needs.
+    - Also added ENV instructions for each environment variable that is needs.
 
 - Building and Running the Docker Image:
 ```
