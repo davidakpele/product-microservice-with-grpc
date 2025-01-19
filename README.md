@@ -244,7 +244,7 @@ docker build -t your-app-name .
 
 - Run the Docker container: After building the image, run the container:
 ```
-docker run -p 8080:8080 product-microservice
+docker run -p 50051:50051 product-microservice
 ```
 
 ## Assumptions and Constraints
