@@ -48,7 +48,7 @@ C:.
     - transport package: The package holds a sub package called `grpc` and the role is to mediate between the gRPC server and the business logic layer. It receives incoming gRPC requests, calls the necessary business logic, and sends back the responses.
 
 ## Proto Package
-> The proto define the structure of the data being sent over the wire and the service methods that can be invoked remotely. They are used to generate client and server code in multiple programming languages, making it possible for services to communicate with each other.
+> The proto define the structure of the data being sent over the wire and the service methods that can be invoked remotely. They are used to generate client and server.
 
 ## Test Package
 > This package holds classes to test our grpc endpoints.
