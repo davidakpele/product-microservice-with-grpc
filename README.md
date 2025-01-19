@@ -31,6 +31,7 @@ C:.
 └───test
 
 ```
+> I named my base folder product-micoservice.
 
 ## Application Configuration 
 > Config holds the application database configuration and info from env file.
