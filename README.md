@@ -65,7 +65,50 @@ cd <repository_name>
 ```
 go mod tidy
 ```
-### Generate the protocol buffers using protoc:
+> During your installation GORM and Database Driver will be install but you prefere  manually installation, use the below command.
+```
+# Install GORM and PostgreSQL driver
+go get -u gorm.io/gorm
+go get -u gorm.io/driver/postgres
+```
+
+### Install & Generate the protocol buffers using protoc:
+####  If You Don't have Protocol Buffers compiler install.
+
+- Install the necessary packages for gRPC support:
+    - To install the Protocol Buffers compiler (protoc) on Windows, follow these steps:
+    - ** Step 1: Download Protocol Buffers **
+    - Visit the official Protocol Buffers GitHub releases page:
+        - https://github.com/protocolbuffers/protobuf/releases
+    - Download the latest version of the precompiled binaries for Windows:
+        - Look for a file named something like
+    - ** Step 2: Extract the ZIP File **
+      - Extract the contents of the downloaded ZIP file to a folder on your system, such as:
+```
+C:\protobuf
+```
+- The folder should contain:
+- ** Step 3: Add to System PATH **
+    - Add the bin directory of the extracted folder to your system's PATH environment variable:
+        - Open the Start Menu and search for Environment Variables.
+        - Click Edit the system environment variables.
+        - In the System Properties window, click the Environment Variables button.
+        - Under System Variables, locate the Path variable, select it, and click Edit.
+        - Click New and add the path to the bin directory (e.g., C:\protobuf\bin).
+        - Click OK to save and close all windows.
+- ** Step 4: Verify Installation **
+    - Open a new Command Prompt (cmd) or PowerShell window.
+    - Run the following command to check if protoc is installed:
+```
+protoc --version
+```
+### If You already have Protocol Buffers compiler installed in your system, move to the next stage below
+# Install gRPC and Protocol Buffers
+
+```
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
 - open your base project directory navigate to proto folder then run the commands belows:
 ```
 protoc --go_out=../ --go-grpc_out=../ product.proto
@@ -203,3 +246,7 @@ docker build -t your-app-name .
 ```
 docker run -p 8080:8080 product-microservice
 ```
+
+## Assumptions and Constraints
+- Database: Ensure the database is properly configured and the product and subscription models are correctly related.
+- Deployment: This microservice can be deployed using Docker for easy management.
